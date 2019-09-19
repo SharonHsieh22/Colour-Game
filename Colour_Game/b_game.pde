@@ -1,6 +1,6 @@
 void game() {
   background(#B4DFFF);
-  noStroke();
+  noStroke();  
   //false---------------------------------------------------------------
   fill(0);
   rect(0, 0, 400, 800);
@@ -11,6 +11,15 @@ void game() {
   rect(400, 0, 400, 800);
   fill(0);
   text("TRUE", 600, 150);
+  //timer---------------------------------------------------------------
+  fill(200);
+  arc(width/2, 500, 120, 120, PI/2+PI, PI/2+PI+clock, PIE);
+  if (clock < TWO_PI) {
+    clock = clock + .05;
+  } else if(clock >= TWO_PI) {
+   mode = gameover;
+   clock = 0;
+  }
   //colours------------------------------------------------------------
   fill(colors[colorchoice]);
   text(words.get(choice), width/2, height/2);
@@ -18,6 +27,9 @@ void game() {
   fill(180);
   text(points, 400, 700);
   println(colorchoice, choice);
+  if (points > highscore) {
+    highscore = points;
+  }
 }
 
 void gameClicks() {
@@ -27,10 +39,12 @@ void gameClicks() {
       mode = gameover;
     } else {
       points++;
+      clock = 0;
     }
   } else if (mouseX > 300 && mouseX < 800) {
-    if(choice == colorchoice) {
+    if (choice == colorchoice) {
       points++;
+      clock = 0;
     } else {
       mode = gameover;
     }

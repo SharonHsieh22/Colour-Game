@@ -1,6 +1,8 @@
 int mode;
 int points;
 int puzzle;
+int highscore;
+float clock = 0;
 final int intro = 0;
 final int game = 1;
 final int gameover = 2;
@@ -10,6 +12,7 @@ color yellow = #FFED1F;
 color green = #9DF53B;
 color blue = #79E5FF;
 color purple = #ED98FF;
+PFont font;
 
 ArrayList<String> words = new ArrayList<String>();
 color[]colors = {red, orange, yellow, green, blue, purple};
@@ -28,6 +31,7 @@ void setup() {
   words.add("BLUE");
   words.add("PURPLE");
   words.get(choice);
+  font = createFont("CHOCD TRIAL___.otf", 120);
 }
 
 void draw() {
@@ -49,6 +53,7 @@ void mousePressed() {
     gameClicks();
   } else if (mode == gameover) {
     mode = intro;
+    points = 0;
   } else {
     println("error" + mode);
   }

@@ -1,6 +1,7 @@
 void game() {
   background(#B4DFFF);
   noStroke();  
+  textFont(font, 130);
   //false---------------------------------------------------------------
   fill(0);
   rect(0, 0, 400, 800);
@@ -12,20 +13,22 @@ void game() {
   fill(0);
   text("TRUE", 600, 150);
   //timer---------------------------------------------------------------
-  fill(200);
+  fill(pink);
   arc(width/2, 500, 120, 120, PI/2+PI, PI/2+PI+clock, PIE);
   if (clock < TWO_PI) {
-    clock = clock + .05;
+    clock = clock + .06;
   } else if(clock >= TWO_PI) {
    mode = gameover;
    clock = 0;
   }
   //colours------------------------------------------------------------
   fill(colors[colorchoice]);
+  textFont(font, 150);
   text(words.get(choice), width/2, height/2);
   //points-------------------------------------------------------------
-  fill(180);
-  text(points, 400, 700);
+  fill(pink);
+  textFont(numberfont);
+  text(points, 400, 720);
   println(colorchoice, choice);
   if (points > highscore) {
     highscore = points;
